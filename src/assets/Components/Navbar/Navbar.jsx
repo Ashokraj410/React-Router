@@ -36,7 +36,7 @@ import {NavLink, useNavigate} from 'react-router-dom'
 export const Navbar = () => {
   const navigate=useNavigate()
   return (
-    <div className='container'>
+    <div className='navbar'>
         <div className='logo'>
             <h2>RAJ</h2>
         </div>
@@ -47,6 +47,7 @@ export const Navbar = () => {
             <NavLink to="/Contact"><li>Contact</li></NavLink>
             <NavLink to="/Products"><li>Product</li></NavLink>
             <NavLink to="/Users"><li>Users</li></NavLink>
+            <NavLink to="/RegisterForm"><li>Register</li></NavLink>
         </ul>
         {/* do not back navigation use--->{replace:true}*/}
 

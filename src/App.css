@@ -8,7 +8,7 @@ body{
     height: 100%;
     background-color: #f2f2f2;
 }
-.container{
+.navbar{
     width: 100%;
     padding: 20px 0px;
     display: flex;
@@ -17,14 +17,14 @@ body{
     border-bottom: 1px solid #ccc;
     align-items: center;
 }
-.container ul li{
+.navbar ul li{
     list-style-type: none;
     padding: 0px 20px; 
     font-size: 18px;
     display: inline-flex;
     cursor: pointer;
 }
-.container button{
+.navbar button{
     width: 100px;
     border:none;
     font-size: 20px;
@@ -39,4 +39,113 @@ a.active{
     color: skyblue;
     font-size: 20px;
     font-weight: 900;
+}
+.container{
+    width: 100%;
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+
+}
+.frm{
+    background: #ffff;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    gap: 8px;
+    padding: 10px;
+    margin-top: 20px;
+}
+.frm input{
+    width: 80%;
+    margin-left: 15px;
+    height: 35px;
+    padding-inline: 10px;
+}
+.frm button{
+    width: 40%;
+    height: 35px;
+    align-self: center;
+    font-size: 17px;
+    cursor: pointer;
+}
+.frm h2{
+    text-align: center;
+}
+.home-container{
+    width: 100%;
+    height: auto;
+    justify-self: center;
+    max-width: 1300px;
+    padding: 10px;
+
+}
+.home-text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+.home-text p{
+    font-size: 18px;
+
+}
+.home-text button{
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    color: blue;
+    background: skyblue;
+    cursor: pointer;
+    border: none;
+}
+.contact-container{
+    width: 100%;
+    height: auto;
+    justify-self: center;
+    max-width: 1300px;
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+
+}
+.contact-container button{
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    background: navajowhite;
+    border-radius: 7px;
+    cursor: pointer;
+
+}
+.user-container{
+    width: 100%;
+    margin: 30px 80px;
+    height: auto;
+}
+#frm{
+    display: flex;
+    flex-direction: column;
+    align-items:left ;
+    margin: 0px 40px ;
+    gap: 5px;
+    margin-top: 20px;
+}
+#frm input{
+    width: 40%;
+    padding: 9px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    outline: none;
+}
+#frm button{
+    width: 20%;
+    padding: 7px;
+    margin-left: 50px;
+
+}
+.error{
+    color: red;
 }

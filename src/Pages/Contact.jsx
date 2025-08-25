@@ -4,9 +4,9 @@ import { useNavigate} from 'react-router-dom'
 export const Contact = () => {
   const navigate=useNavigate();
   return (
-    <div>
-      <button onClick={()=>navigate("Details")}>Info</button>
-      <button onClick={()=>navigate("info")}>form</button>
+    <div className='contact-container'>
+      <button className='' onClick={()=>navigate("Details")}>Form</button>
+      <button onClick={()=>navigate("info")}>Info</button>
     </div>
   )
 }

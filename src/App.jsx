@@ -38,7 +38,7 @@ import './App.css'
 import { Products } from './Pages/Products'
 import { Home } from './Pages/Home'
 import { About } from './Pages/About'
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, Form, Route, RouterProvider} from 'react-router-dom'
 import { RootLayout } from './Layout/RootLayout'
 import { Login } from './assets/Components/Login'
 import { ContactLayout } from './Layout/ContactLayout'
@@ -46,7 +46,11 @@ import { Info } from './assets/Components/Info'
 import { Details } from './assets/Components/Details'
 import { NotFound } from './assets/Components/NotFound'
 import { UserLayout } from './Layout/UserLayout'
-import { Users } from './Pages/Users'
+import {Users } from './Pages/Users'
+import { userLoader, userSingleLoader } from './assets/Components/Utils/UserLoader'
+import { User } from './Pages/User'
+import { ErrorPage } from './assets/Components/ErrorPage'
+import { RegisterForm } from './assets/Components/Form/RegisterForm'
 
 export const App = () => {
 
@@ -62,9 +66,11 @@ export const App = () => {
         <Route path='Products' element={<Products/>}/>
         <Route path='Login' element={<Login/>}/>
         <Route path='*' element={<NotFound/>}/>
-        <Route path='UserLayout' element={<UserLayout/>}>
-            <Route path='Users' element={<Users/>}/>
+        <Route path='Users' element={<UserLayout/>} errorElement={<ErrorPage/>}>
+            <Route index element={<Users/>} loader={userLoader}/>
+            <Route path=":id" element={<User/>} loader={userSingleLoader}/>
         </Route>
+        <Route path='RegisterForm' element={<RegisterForm/>}/>
         </Route>
       
     )
