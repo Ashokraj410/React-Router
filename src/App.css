@@ -52,13 +52,15 @@ a.active{
     background: #ffff;
     display: flex;
     flex-direction: column;
-    width: 350px;
-    gap: 8px;
+    width: 90%;
+    gap: 10px;
     padding: 10px;
-    margin-top: 20px;
+    margin-top:20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
 }
 .frm input{
-    width: 80%;
+    width: 50%;
     margin-left: 15px;
     height: 35px;
     padding-inline: 10px;
@@ -125,6 +127,19 @@ a.active{
     margin: 30px 80px;
     height: auto;
 }
+.frm .pass{
+    display: inline-flex;
+    width: 100%;
+
+}
+.pass .main-pass{
+    width: 50%;
+    align-items: start;
+}
+.pass .cp-pass{
+    width: 50%;
+    
+}
 #frm{
     display: flex;
     flex-direction: column;
@@ -148,4 +163,50 @@ a.active{
 }
 .error{
     color: red;
+}
+.gender-list{
+    display: flex;
+    font-size: 17px;
+    gap: 10px;
+}
+.gender-list label{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.gender-list input{
+    width: 17px;
+}
+.frm select{
+    height: 30px;
+    width: 50%;
+    margin-left: 15px;
+}
+.frm .Agree{
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+
+}
+.Agree input{
+    width: 17px;
+}
+.frm textarea{
+    width: 50%;
+    margin-left: 15px;
+    height: auto;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button{
+	-webkit-appearance:none;
+}
+.frm .language{
+    display:flex;
+    gap: 20px;
+    align-items: center;
+
+}
+.frm .language input{
+    width: 17px;
+
 }
