@@ -1,9 +1,13 @@
 import { useForm } from "react-hook-form";
 import * as Yup from"yup"
 import  {yupResolver} from "@hookform/resolvers/yup" 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
+import {useNavigate } from "react-router-dom";
+import{UserData} from'../Components/Dashboard/UserData'
 
+
+ 
 
 
 let schema=Yup.object().shape({
@@ -47,6 +51,10 @@ let schema=Yup.object().shape({
 
 });
 
+
+
+
+
 /* language validation*/
 
 const ListData=[
@@ -59,6 +67,7 @@ const ListData=[
 
 
 export const Login = () => {
+
 
   const renderCount=useRef(0)
 
@@ -74,13 +83,25 @@ export const Login = () => {
   });
 
 
+
+  const navigate=useNavigate();
   /* to fill input data get  */
   const onSubmit=(data)=>{
     alert("From Submitted Successfully!");
-    console.log(data);
+
+    /* data  store in local storage*/
+
+    localStorage.setItem("user",JSON.stringify(data))
+
+    /* data retrive page */
+    navigate("/UserData")
+
     reset();
 
   };
+
+
+  
 
 
 
@@ -142,7 +163,7 @@ export const Login = () => {
         {ListData.map((item)=>{
           return(
             <div key={item.id} className="language">
-              <input type="checkbox"   value={item.value} {...register("language",{ required: "Select at least one language" })} />
+              <input type="checkbox" value={item.value} {...register("language",{ required: "Select at least one language" })} />
               <label htmlFor={item.id}>{item.value}</label>
             </div>
           )
