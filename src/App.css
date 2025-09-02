@@ -185,7 +185,8 @@ a.active{
 .frm select{
     height: 30px;
     width: 40%;
-    margin-left: 15px;
+    margin-left: 1px;
+    border: 1px solid #ccc;
     outline: none;
 }
 .frm .Agree{
@@ -199,10 +200,11 @@ a.active{
 }
 .frm textarea{
     width: 40%;
-    margin-left: 15px;
+    margin-left: 75px;
     height: auto;
     padding-inline: 10px;
     outline: none;
+    border: 1px solid #ccc;
 }
 input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button{

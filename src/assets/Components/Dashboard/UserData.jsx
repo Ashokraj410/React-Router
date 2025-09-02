@@ -1,31 +1,46 @@
-import React, { useEffect, useState } from "react";
-import "./data.css";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./data.css"
 
 export const UserData = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [showDetails, setShowDetails] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUsers = localStorage.getItem("users"); //  get "users" array
-    if (storedUsers) {
-      setUsers(JSON.parse(storedUsers));
-    }
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    setUsers(storedUsers);
   }, []);
 
-  if (users.length === 0) {
-    return <h2>No user data found. Please fill the form first.</h2>;
-  }
+  // Delete
+  const handleDelete = (index) => {
+    const confirnmation = confirm("Are you sure delete the Row?")
+    if (confirnmation) {
+      const updatedUsers = users.filter((_, i) => i !== index);
+      setUsers(updatedUsers);
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+    }
+  };
 
-  // filter by search (case)
+
+  //Delete all
+  const handleDeleteAll = () => {
+    const confirmation = confirm("Are you sure you want to delete ALL users?");
+    if (confirmation) {
+      setUsers([]);
+      localStorage.removeItem("users");
+    }
+  };
+
+  // Filter
   const filteredUsers = users.filter((u) =>
-    u.fullname.toLowerCase().includes(search.toLowerCase())||
-    u.email.toLowerCase().includes(search.toLowerCase())||
-    u.gender.toLowerCase().includes(search.toLowerCase())||
-    u.department.toLowerCase().includes(search.toLowerCase())||
+    u.fullname.toLowerCase().includes(search.toLowerCase()) ||
+    u.email.toLowerCase().includes(search.toLowerCase()) ||
+    u.gender.toLowerCase().includes(search.toLowerCase()) ||
+    u.department.toLowerCase().includes(search.toLowerCase()) ||
     u.PhoneNumber.toString().includes(search)
   );
-  
 
   // View
   const handleView = (user) => {
@@ -33,26 +48,13 @@ export const UserData = () => {
   };
 
   // Edit
-  const handleEdit = (user) => {
-    localStorage.setItem("editUser", JSON.stringify(user));
-    window.location.href = "/Login"; 
-  };
-
-  //  Delete
-  const handleDelete = (index) => {
-    const updatedUsers = [...users];
-    let confirmation=confirm("Are you sure delete the row ?");
-    if(confirmation){
-      updatedUsers.splice(index, 1);
-      setUsers(updatedUsers);
-      localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-    }
-    
+  const handleEdit = (user, index) => {
+    navigate("/RegisterForm", { state: { user, index } }); // Pass data to RegisterForm
   };
 
   return (
     <div className="userdata">
+      <h2 style={{ textAlign: "center" }}>Students List</h2>
       <div className="filter">
         <div className="in-filter">
           <input
@@ -60,61 +62,54 @@ export const UserData = () => {
             id="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Enter the Name"
+            placeholder="Search user"
           />
         </div>
       </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>PhoneNumber</th>
-            <th>Gender</th>
-            <th>Department</th>
-            <th>Language</th>
-            <th>View</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredUsers.length > 0 ? (
-            filteredUsers.map((user, index) => (
-              <tr key={index}>
-                <td>{user.fullname}</td>
-                <td>{user.email}</td>
-                <td>{user.PhoneNumber}</td>
-                <td>{user.gender}</td>
-                <td>{user.department}</td>
-                <td>{user.language.join(", ")}</td>
-                <td>
-                  <button className="view" onClick={() => handleView(user)}>
-                    View
-                  </button>
-                </td>
-                <td>
-                  <button className="edit" onClick={() => handleEdit(user)}>
-                    Edit
-                  </button>
-                </td>
-                <td>
-                  <button className="delete" onClick={() => handleDelete(index)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))
-          ) : (
+      {users.length === 0 ? (
+        <h2 style={{textAlign:"center"}}>No users found.</h2>
+      ) : (
+        <table border="1" cellPadding="10">
+          <thead>
             <tr>
-              <td colSpan="9" style={{ textAlign: "center", color: "red" }}>
-                No user found ❌
-              </td>
+              <th>FullName</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Department</th>
+              <th>Gender</th>
+              <th>Languages</th>
+              <th>Feedback</th>
+              <th>Edit</th>
+              <th>Delete</th>
+              <th>View</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredUsers.length > 0 &&
+              filteredUsers.map((u, index) => (
+                <tr key={index}>
+                  <td>{u.fullname}</td>
+                  <td>{u.email}</td>
+                  <td>{u.PhoneNumber}</td>
+                  <td>{u.department}</td>
+                  <td>{u.gender}</td>
+                  <td>{u.language?.join(", ")}</td>
+                  <td>{u.feedback}</td>
+                  <td><button onClick={() => handleEdit(u, index)}>Edit</button></td>
+                  <td><button onClick={() => handleDelete(index)}>Delete</button></td>
+                  <td><button className="view" onClick={() => handleView(u)}>View</button></td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      )}
+      <div style={{ marginTop: "15px", textAlign: "center" }}>
+        <button onClick={handleDeleteAll} style={{ background: "red", color: "white", padding: "8px 15px", border: "none", borderRadius: "5px", cursor: "pointer" }}>
+          Delete All
+        </button>
+      </div>
+      {/* ✅ closed the ternary condition properly */}
 
       {showDetails && (
         <div className="popup">
@@ -126,7 +121,7 @@ export const UserData = () => {
           <p><strong>Department:</strong> {showDetails.department}</p>
           <p><strong>Languages:</strong> {showDetails.language.join(", ")}</p>
           <p><strong>Feedback:</strong> {showDetails.feedback}</p>
-          <button onClick={() => setShowDetails(null)} >Close</button>
+          <button onClick={() => setShowDetails(null)}>Close</button>
         </div>
       )}
     </div>
