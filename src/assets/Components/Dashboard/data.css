@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    background-color: #fff;
+    height: 100vh;
+}
+.userdata{
+    background:#fff;
+}
+.filter{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 50px;
+}
+.in-filter{
+    display: flex;
+    gap: 10px;
+}
+.in-filter input{
+    height: 35px;
+    border: 1px solid #ccc;
+    padding-inline: 7px;
+    font-size: 14px;
+    border-radius: 7px;
+    outline: none;
+    cursor: pointer;
+}
+.search-btn{
+    width: 100px;
+    height: 35px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+table{
+    width: 80%;
+    justify-self: center;
+    align-self: center;
+    border: 2px solid #ccc;
+}
+thead{
+    background-color: rgb(117, 54, 9);
+    font-size: 18px;
+    color: #fff;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+tbody{
+    text-align: center;
+}
+tbody .delete{
+    background: rgb(215, 8, 8);
+    border: none;
+    padding: 2px 6px;
+    font-size: 15px;
+    color: aliceblue;
+    cursor: pointer;
+}
+tbody .edit{
+    background: rgb(23, 23, 252);
+    color: #ffff;
+    border: none;
+    cursor: pointer;
+    padding: 2px 8px;
+    font-size: 15px;
+}
+.view{
+    background: rgb(135, 210, 23);
+    color: #ffff;
+    border: none;
+    padding: 2px 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+table tr:nth-child(even){
+    background-color: #ccc;
+}
+
+table tr:hover{
+    background-color:skyblue;
+}
+.popup{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    background: #f5e8e8;
+    margin: 50px 200px;
+    padding: 20px;
+
+}
+.popup button{
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 6px;
+    outline: none;
+    align-self: center;
+}
+.popup button:hover{
+    background: red;
+    color: #ffff;
+    font-weight: bolder;
+}

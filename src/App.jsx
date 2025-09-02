@@ -51,6 +51,7 @@ import { userLoader, userSingleLoader } from './assets/Components/Utils/UserLoad
 import { User } from './Pages/User'
 import { ErrorPage } from './assets/Components/ErrorPage'
 import { RegisterForm } from './assets/Components/Form/RegisterForm'
+import { UserData } from './assets/Components/Dashboard/UserData'
 
 export const App = () => {
 
@@ -71,6 +72,7 @@ export const App = () => {
             <Route path=":id" element={<User/>} loader={userSingleLoader}/>
         </Route>
         <Route path='RegisterForm' element={<RegisterForm/>}/>
+        <Route path="UserData" element={<UserData />} />
         </Route>
       
     )

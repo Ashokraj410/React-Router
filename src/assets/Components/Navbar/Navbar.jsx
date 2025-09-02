@@ -48,6 +48,7 @@ export const Navbar = () => {
             <NavLink to="/Products"><li>Product</li></NavLink>
             <NavLink to="/Users"><li>Users</li></NavLink>
             <NavLink to="/RegisterForm"><li>Register</li></NavLink>
+            <NavLink to="/UserData"><li>Students</li></NavLink>
         </ul>
         {/* do not back navigation use--->{replace:true}*/}
 

@@ -6,7 +6,7 @@
 body{
     width: 100%;
     height: 100%;
-    background-color: #f2f2f2;
+    background-color: black;
 }
 .navbar{
     width: 100%;
@@ -49,7 +49,7 @@ a.active{
 
 }
 .frm{
-    background: #ffff;
+    background: #f2f2f2;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -58,15 +58,19 @@ a.active{
     margin-top:20px;
     border: 2px solid #ccc;
     border-radius: 10px;
+
 }
 .frm input{
-    width: 50%;
+    border: 1px solid #ccc;
+    width: 40%;
     margin-left: 15px;
     height: 35px;
+    cursor: pointer;
+    outline: none;
     padding-inline: 10px;
 }
 .frm button{
-    width: 40%;
+    width: 10%;
     height: 35px;
     align-self: center;
     font-size: 17px;
@@ -162,6 +166,7 @@ a.active{
 
 }
 .error{
+    margin-left: 20px;
     color: red;
 }
 .gender-list{
@@ -179,8 +184,9 @@ a.active{
 }
 .frm select{
     height: 30px;
-    width: 50%;
+    width: 40%;
     margin-left: 15px;
+    outline: none;
 }
 .frm .Agree{
     display: inline-flex;
@@ -192,9 +198,11 @@ a.active{
     width: 17px;
 }
 .frm textarea{
-    width: 50%;
+    width: 40%;
     margin-left: 15px;
     height: auto;
+    padding-inline: 10px;
+    outline: none;
 }
 input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button{
